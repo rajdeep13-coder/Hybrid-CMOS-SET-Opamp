@@ -1,0 +1,38 @@
+# MATLAB / Simulink
+*.asv
+*.m~
+*.slxc
+*.autosave
+slprj/
+sfprj/
+*.mat.backup
+*.mex*
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# KiCad
+*.kicad_prl
+*.bak
+*_saved-*
+*.tmp
+*-save.kicad_pcb
+*-save.kicad_sch
+fp-info-cache
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
