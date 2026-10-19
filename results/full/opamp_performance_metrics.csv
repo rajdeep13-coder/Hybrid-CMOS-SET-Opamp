@@ -1,0 +1,8 @@
+Metric,Measured Value,Design Specification,Status
+"DC Open-Loop Gain (A0)","71.70 dB",">= 60.0 dB","PASS"
+"Gain-Bandwidth Product (GBW)","7.96 MHz",">= 5.0 MHz","PASS"
+"Phase Margin (PM)","70.10 deg",">= 60.0 deg","PASS"
+"Common-Mode Rejection Ratio (CMRR)","47.96 dB",">= 45.0 dB","PASS"
+"Slew Rate (SR)","4.00 V/us",">= 2.0 V/us","PASS"
+"Static Power Dissipation","5.84 uW","<= 10.0 uW","PASS"
+"Room-Temp Coulomb Ratio (Ec/kBT)","5.63",">= 5.0","PASS"

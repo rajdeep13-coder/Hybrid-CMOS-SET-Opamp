@@ -1,0 +1,209 @@
+Project Synopsis Report (Phase I – 5th Semester) 
+of the 
+Final Year Project 
+ 
+titled 
+“Design and Simulation of a Hybrid CMOS–SET Based 
+Operational Amplifier” 
+ 
+Submitted for partial fulfilment of the requirements for the degree of 
+Bachelor of Technology 
+in 
+Electronics and Communication Engineering 
+ 
+by 
+Rajdeep Paul — 16900324089 
+Raunak Das — 16900324091 
+Purba Saha — 16900324100 
+Mridul Ghosh — 16900324115 
+ 
+Under the guidance of 
+Snigdha Choudhury Kolay 
+Assistant Professor, Department of Electronics & Communication Engineering 
+ 
+ 
+ 
+ 
+ 
+Academy of Technology 
+Department of Electronics & Communication Engineering 
+G. T. Road (Adisaptagram), Aedconagar 
+Hooghly – 712121, West Bengal, India 
+Odd Semester 2026 
+
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 2 of 7 
+Table of Contents 
+1. Abstract .................................................................................................................................. 3 
+2. Introduction ............................................................................................................................ 3 
+A) Overview......................................................................................................................... 3 
+B) Prior Work (Literature Review) ...................................................................................... 3 
+C) Challenges ....................................................................................................................... 4 
+D) Motivation....................................................................................................................... 4 
+E) Objective ......................................................................................................................... 4 
+3. Requirement Analysis ............................................................................................................ 4 
+4. Feasibility Analysis ................................................................................................................ 5 
+5. Methodology .......................................................................................................................... 6 
+6. Future Scope ………………………………………………………………………………..6 
+References .................................................................................................................................. 7 
+  
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 3 of 7 
+1. Abstract 
+CMOS scaling is approaching fundamental physical limits, motivating research into post-CMOS 
+devices such as Single-Electron Transistors (SETs). SETs offer extremely low power dissipation via 
+the Coulomb blockade effect, but suffer from poor current drivability, low gain, and high output 
+impedance, limiting standalone use. Hybrid CMOS–SET circuits combine SET-level power efficiency 
+with CMOS drive strength and have proven successful in digital logic, though prior designs modelled 
+the SET and CMOS devices separately — using the MIB compact model and BSIM4.6.1 respectively 
+— within a SPICE-based (T-Spice) environment. This project extends the hybrid approach to the 
+analog domain, proposing a hybrid CMOS–SET Operational Amplifier that will instead be 
+implemented and simulated as a single, unified model within MATLAB/Simulink, with its gain, 
+bandwidth and power dissipation benchmarked against a conventional CMOS op-amp. 
+2. Introduction 
+A) Overview 
+Moore's Law is nearing physical limits as MOSFET channel lengths shrink to a few nanometres, driving 
+interest in post -CMOS technologies. Single -Electron Transistors (SETs) — three-terminal devices 
+where a gate-controlled island exchanges electrons with source and drain through tunnel junctions (Fig. 
+1) — promise atomic-scale density and ultra-low power via the Coulomb blockade effect. However, a 
+standalone SET has poor current drivability and very high output impedance, so it cannot directly 
+replace MOSFETs. Pairing an SET with a CMOS transistor as load/driver produces a hybrid CMOS –
+SET circuit that keeps the SET's low-power switching while using CMOS for output drive. This project 
+extends that hybrid concept — so far mainly demonstrated for digital logic — to an analog Operational 
+Amplifier. 
+ 
+Fig. 1: Structure of a Single-Electron Transistor (SET) — source, drain and gate coupled to a conducting island via tunnel 
+junctions. 
+B) Prior Work (Literature Review) 
+Jana et al. (2013) demonstrated a room -temperature-operable hybrid CMOS –SET inverter using a 
+PMOS load with an SET pull -down device, verified with the MIB compact SET model and the 
+BSIM4.6.1 CMOS model in a Tanner/T -Spice environment [1]. Extending this in verter, they realised 
+NAND, NOR, AND, OR, XOR and XNOR gates using series–AND / parallel–OR connection rules, all 
+
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 4 of 7 
+functioning correctly at a room -temperature-operable 800 mV supply. Notably, the hybrid inverter 
+achieved a voltage gain of about 4.32 –9.20 (for W/L = 1.5 –10) and consumed roughly one -sixth the 
+power of a conventional CMOS inverter (Fig. 2) [1].  These results confirm hybridisation's feasibility 
+for digital logic; extending the same principle to analog blocks such as op -amps remains largely 
+unexplored, motivating this project. 
+ 
+Fig. 2: Reported average power consumption, hybrid CMOS–SET vs. conventional CMOS inverter (data from [1]). 
+C) Challenges 
+Key challenges: SETs exhibit non-linear, staircase-like I–V behaviour unsuited to smooth analog gain, 
+unlike their clean switching behaviour in logic gates; high sensitivity to background charge demands 
+carefully chosen room -temperature-operable parameters; MATLAB/Simulink has no built -in SET 
+model, so one must be built from published MIB equations;  and fair benchmarking against a 
+conventional CMOS op-amp requires consistent bias and sizing conditions. 
+D) Motivation 
+Battery-operated and energy -harvested electronics — wearables, implantable sensors, IoT nodes — 
+demand analog blocks that consume far less power than conventional CMOS. Hybrid CMOS–SET logic 
+has already shown roughly six-fold power savings over CMOS at room temperature; achieving a similar 
+gain for an op-amp — one of the most fundamental analog building blocks — would be a meaningful 
+step towards ultra-low-power mixed-signal design, an area so far dominated by digital-logic studies. 
+E) Objective 
+● Study SET operation, the Coulomb blockade, and the MIB compact model. 
+● Review hybrid CMOS–SET logic topologies for design principles transferable to analog 
+circuits. 
+● Propose a room-temperature-operable hybrid CMOS–SET op-amp topology. 
+● Model and simulate the design in MATLAB/Simulink. 
+● Characterise DC transfer, open-loop gain, bandwidth and power dissipation. 
+● Benchmark performance against a conventional CMOS op-amp. 
+ 
+
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 5 of 7 
+3. Requirement Analysis 
+A) Functional Requirement 
+● Shall amplify the input voltage linearly within its operating range. 
+● Shall function correctly at room temperature using literature-consistent SET parameters. 
+● Shall interface at CMOS-compatible voltage levels (e.g., ~0.8 V, scaled as needed). 
+● Shall maintain a stable DC bias point prior to AC/transient analysis. 
+B) System Requirement 
+● An SET-based active load/gain element combined with CMOS stages for biasing and output 
+drive (Fig. 3). 
+● Room-temperature-operable SET and CMOS parameter sets adapted from literature. 
+● A simulation environment able to solve the combined SET–CMOS circuit equations. 
+ 
+Fig. 3: Proposed block-level architecture of the hybrid CMOS–SET op-amp. 
+C) Hardware Requirement 
+● A standard computer (8 GB+ RAM) running MATLAB/Simulink. 
+D) Software Requirement 
+● MATLAB/Simulink; Simscape Electrical or custom S-function blocks for SET behaviour (no 
+built-in SET block exists); standard documentation tools. 
+4. Feasibility Analysis 
+A) Technical Feasibility 
+Prior literature confirms hybrid CMOS –SET circuits can be modelled and simulated successfully at 
+room temperature (Section 2B), and the team's existing HDL, FPGA and simulation experience supports 
+building and debugging the MATLAB/Simulink model. 
+B) Scheduling Feasibility 
+The project follows four broad stages — literature review (Phase I), topology/model development, 
+simulation and characterisation, and documentation — aligned with the Phase I/II/III evaluation 
+structure, allowing time for SET macro-model debugging. 
+
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 6 of 7 
+C) Financial Feasibility 
+As a simulation-only project with no fabrication, the only requirement is MATLAB/Simulink access, 
+already available through the institute — financially negligible. 
+D) Social and Ethical Consideration 
+No human/animal subjects or environmental impact are involved. A successful low -power hybrid op-
+amp would support the broader goal of energy-efficient electronics; all prior work is properly cited. 
+5. Methodology 
+1. Survey SET physics, the MIB model, and hybrid CMOS–SET logic designs. 
+2. Select a standard CMOS op-amp topology as baseline. 
+3. Define a hybrid SET–CMOS topology and room-temperature-operable parameters. 
+4. Build the model in MATLAB/Simulink (Simscape + custom SET macro-model). 
+5. Run DC, AC and transient simulations to extract gain, bandwidth and power. 
+6. Compare results against the conventional CMOS baseline and document findings. 
+ 
+Fig. 4: Proposed methodology workflow. 
+ 
+6. Future Scope 
+1. Extend the design to a fully differential, multi-stage topology for improved CMRR and gain. 
+2. Study sensitivity to background charge and temperature beyond the room-temperature-operable 
+regime considered here. 
+3. Explore layout and fabrication feasibility using room-temperature-operable SOI-based SETs. 
+4. Integrate the validated op-amp into larger low-power blocks (ADCs, filters, sensor interfaces) for 
+IoT applications. 
+5. Benchmark the hybrid approach against other emerging post-CMOS candidates such as FinFET 
+and TFET. 
+ 
+ 
+ 
+
+--- PAGE ---
+Synopsis Report – Hybrid CMOS–SET Based Operational Amplifier 
+Page 7 of 7 
+References 
+[1] M. S. El Kazdir, M. Rzaizi, K. El Assali, and D. Abouelaoualim, "Design and simulation of hybrid 
+SET-CMOS logic inverter using macro-model technique," Revista Mexicana de Física, vol. 68, no. 6, 
+art. 061401, 2022. — modelled entirely in MATLAB/Simulink 's Simscape environment, directly 
+relevant to this project's methodology. 
+[2] R. Shah, R. Parekh, and R. Dhavse, "Design strategy and simulation of single -gate SET for novel 
+SETMOS hybridization," Journal of Computational Electronics, vol. 20, no. 1, pp. 218–229, 2021. 
+[3] R. Shah and R. Dhavse, "Novel hybrid silicon SETMOS design for power efficient room 
+temperature operation," Silicon, vol. 13, no. 2, pp. 587–597, 2021. 
+[4] Y. Agrawal, R. Patel, and R. Parekh, "Single -electron transistor: review in perspective of theory, 
+modelling, design and fabrication," Microsystem Technologies, vol. 27, no. 5, pp. 1863–1875, 2021. 
+[5] T. Tanamoto and K. Ono, "Simulations of hybrid charge -sensing single-electron-transistors and 
+CMOS circuits," Applied Physics Letters, vol. 119, no. 17, art. 174002, 2021. 
+[6] C. Zhang, H. Wu, and C. Chen, "Area -efficient finite field multiplication using hybrid SET -MOS 
+technology," IEEE Transactions on Circuits and Systems I: Regular Papers, vol. 69, no. 11, pp. 4358–
+4366, 2022. 
+[7] S. P. Gopnarayan, S. D. Markande, and V. P. Raut, "Optimization of single electron transistor based 
+digital logic design," Indonesian Journal of Electrical Engineering and Computer Science, vol. 38, no. 
+3, pp. 1553–1563, 2025. 
+[8] J. von Borany et al., "CMOS -compatible manufacturability of sub -15 nm Si/SiO₂/Si nanopillars 
+containing single Si nanodots for single electron transistor applications," Semiconductor Science and 
+Technology, vol. 38, no. 5, art. 055011, 2023. 
+[9] R. Patel, Y. Agrawal, and R. Parekh, "A new tool for simulation of single electron transistor based 
+microprocessor using vector file," Nanoscience and Nanotechnology – Asia, vol. 10, no. 4, pp. 493 –
+500, 2020. 
+[10] A. Okazaki, P. Narayanan, et al., "Beyond-CMOS roadmap: From Boolean logic to neuro-inspired 
+computing," in Proc. IEEE International Symposium on Circuits and Systems (ISCAS), 2022. 
