@@ -1,6 +1,10 @@
-Parameter,Unit,Value,Description
-VDD,V,0.800,Supply Rail
-I_supply_total,A,2.049347e-06,Total Current Drawn from VDD
-P_supply_total_uW,uW,1.6395,Total Static Power Dissipation
-P_load_uW,uW,0.015144,Power Delivered to Load Resistor
-P_internal_uW,uW,1.6243,Transistor Core Dissipation
+Component,Unit,Value,Description
+VDD_Supply_Power,uW,1.6395,Total power drawn from 0.8 V rail
+M1_NMOS_Power,uW,0.3751,Dissipation in M1
+M2_NMOS_Power,uW,0.2850,Dissipation in M2
+M3_PMOS_Power,uW,0.3324,Dissipation in M3 diode load
+M4_PMOS_Power,uW,0.4250,Dissipation in M4 mirror load
+Tail_Source_Power,uW,0.2069,Dissipation across tail source
+Load_RL_Power,uW,0.015144,Power delivered to 10 MOhm load
+Core_Dissipation,uW,1.6243,Internal stage dissipation excluding load
+Conservation_Residual,W,2.22e-20,P_supply - sum(P_components)

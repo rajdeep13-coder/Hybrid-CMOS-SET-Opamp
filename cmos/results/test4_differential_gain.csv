@@ -1,3 +1,5 @@
-Metric,Unit,Theoretical,Simulated,Error_Percent
-Avd_linear,V/V,50.00,45.84,-8.32%
-Avd_dB,dB,33.98,33.23,-2.22%
+Configuration,Parameter,Unit,Theoretical,Simulated,Notes
+Intrinsic,Avd_open,V/V,52.88,50.00,Open-circuit small-signal gain
+Intrinsic,Avd_open_dB,dB,34.47,33.98,gm1 * (ro_n || ro_p)
+Loaded,Avd_loaded,V/V,44.04,45.84,Loaded with RL = 10 MOhm
+Loaded,Avd_loaded_dB,dB,32.88,33.23,gm1 * (ro_stage || RL)

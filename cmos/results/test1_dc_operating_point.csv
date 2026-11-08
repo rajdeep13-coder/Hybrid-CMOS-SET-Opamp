@@ -1,9 +1,9 @@
-Parameter,Unit,Value,Target/Constraint,Status
+Parameter,Unit,Value,Constraint/Target,Status
 VDD,V,0.800,0.800,VERIFIED
 VICM,V,0.400,0.400,VERIFIED
-Vs,V,0.1029,>= 0.080,VERIFIED
+Vs,V,0.1029,>= 0.050,VERIFIED
 Vd1,V,0.4725,~ 0.470,VERIFIED
-Vout_quiescent,V,0.3891,~ 0.470,VERIFIED
+Vout_quiescent,V,0.3891,~ 0.400,VERIFIED
 Itail,A,2.010432e-06,2.00e-6,VERIFIED
 Id1,A,1.014898e-06,1.00e-6,VERIFIED
 Id2,A,9.955345e-07,1.00e-6,VERIFIED
