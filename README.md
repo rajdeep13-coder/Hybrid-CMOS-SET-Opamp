@@ -7,6 +7,11 @@
 
 ---
 
+## 0. Initials
+
+- **What is CMOS:** [Click here](https://en.wikipedia.org/wiki/CMOS)
+
+
 ## 1. Project Overview & Objectives
 
 As CMOS scaling approaches fundamental physical and thermal limits, Single-Electron Transistors (SETs) offer an attractive post-CMOS paradigm through Coulomb blockade phenomena, enabling atomic-scale density and ultra-low power dissipation. However, standalone SETs suffer from severe limitations:

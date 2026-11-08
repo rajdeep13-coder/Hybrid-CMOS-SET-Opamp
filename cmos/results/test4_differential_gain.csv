@@ -1,0 +1,3 @@
+Metric,Unit,Theoretical,Simulated,Error_Percent
+Avd_linear,V/V,50.00,45.84,-8.32%
+Avd_dB,dB,33.98,33.23,-2.22%

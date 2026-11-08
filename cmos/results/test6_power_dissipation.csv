@@ -1,0 +1,6 @@
+Parameter,Unit,Value,Description
+VDD,V,0.800,Supply Rail
+I_supply_total,A,2.049347e-06,Total Current Drawn from VDD
+P_supply_total_uW,uW,1.6395,Total Static Power Dissipation
+P_load_uW,uW,0.015144,Power Delivered to Load Resistor
+P_internal_uW,uW,1.6243,Transistor Core Dissipation
